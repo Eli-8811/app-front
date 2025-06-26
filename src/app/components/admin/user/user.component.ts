@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../../../services/http.service';
 import { AgGridModule } from 'ag-grid-angular';
 import { HttpClientModule } from '@angular/common/http';
@@ -6,6 +6,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { RolesButtonComponent } from '../roles-button/roles-button.component';
 import { GridApi } from 'ag-grid-community';
+import { LayoutService } from '../../../services/layout.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-user',
@@ -22,8 +25,10 @@ import { GridApi } from 'ag-grid-community';
   providers: [HttpService],
 })
 export class UserComponent implements OnInit {
-
-  constructor(private _httpService: HttpService) {}
+  constructor(
+    private _httpService: HttpService,
+    private layoutService: LayoutService,
+  ) {}
 
   gridApi!: GridApi;
   rowData: any[] = [];
@@ -61,8 +66,22 @@ export class UserComponent implements OnInit {
     },
   ];
 
+  private destroy$ = new Subject<void>();
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
+  }
+
   ngOnInit() {
     this.getUserList();
+    this.layoutService.layoutChanged$
+      .pipe(takeUntil(this.destroy$))
+      .subscribe(() => {
+        if (this.gridApi && !this.gridApi.isDestroyed()) {
+          this.gridApi.sizeColumnsToFit();
+        }
+      });
   }
 
   getUserList() {
@@ -80,10 +99,4 @@ export class UserComponent implements OnInit {
       this.gridApi.sizeColumnsToFit();
     });
   }
-
-  @HostListener('window:resize')
-  onResize() {
-    this.gridApi?.sizeColumnsToFit();
-  }
-
 }

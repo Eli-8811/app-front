@@ -1,9 +1,15 @@
 <app-header (toggleSidebar)="toggleSidebar()"></app-header>
 
 <mat-drawer-container class="container">
-  
-  <mat-drawer #drawer mode="side" [opened]="isSidebarOpen" class="sidebar">
-    <app-sidebar></app-sidebar>
+
+  <mat-drawer
+    #drawer
+    mode="side"
+    [opened]="isSidebarOpen"
+    class="sidebar"
+    (openedChange)="onDrawerChange()"
+  >
+    <app-sidebar />
   </mat-drawer>
 
   <mat-drawer-content class="content">
