@@ -4,6 +4,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatListModule } from '@angular/material/list';
 import { HeaderComponent } from '../header/header.component';
 import { SidebarComponent } from '../sidebar/sidebar.component';
+import { FooterComponent } from '../footer/footer.component';
 
 @Component({
   selector: 'app-admin',
@@ -15,6 +16,7 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
     MatListModule,
     HeaderComponent,
     SidebarComponent,
+    FooterComponent
   ],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.scss',
