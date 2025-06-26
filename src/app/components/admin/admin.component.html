@@ -1,11 +1,13 @@
 <app-header (toggleSidebar)="toggleSidebar()"></app-header>
 
 <mat-drawer-container class="container">
-  <mat-drawer mode="side" [opened]="isSidebarOpen" class="sidebar">
+  
+  <mat-drawer #drawer mode="side" [opened]="isSidebarOpen" class="sidebar">
     <app-sidebar></app-sidebar>
   </mat-drawer>
 
   <mat-drawer-content class="content">
     <router-outlet />
   </mat-drawer-content>
+
 </mat-drawer-container>

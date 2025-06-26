@@ -39,7 +39,7 @@ export class UserComponent implements OnInit {
     },
     {
       field: 'createdAt',
-      headerName: 'Fecha Creación',
+      headerName: 'Fecha creación',
       sortable: true,
       filter: true,
       valueFormatter: (params: any) =>
@@ -50,7 +50,7 @@ export class UserComponent implements OnInit {
     },
     {
       field: 'updatedAt',
-      headerName: 'Fecha Modificación',
+      headerName: 'Fecha modificación',
       sortable: true,
       filter: true,
       valueFormatter: (params: any) =>

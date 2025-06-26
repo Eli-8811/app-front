@@ -1,8 +1,8 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { AuthService } from '../../../services/auth.service';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './header.component.scss',
 })
 export class HeaderComponent {
+  
   constructor(private _authService: AuthService) {}
 
   @Output() toggleSidebar = new EventEmitter<void>();
@@ -23,5 +24,5 @@ export class HeaderComponent {
   onToggleSidebar() {
     this.toggleSidebar.emit();
   }
-  
+
 }
