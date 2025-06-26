@@ -22,14 +22,14 @@ import { GridApi } from 'ag-grid-community';
   providers: [HttpService],
 })
 export class UserComponent implements OnInit {
-  
+
   constructor(private _httpService: HttpService) {}
 
   gridApi!: GridApi;
   rowData: any[] = [];
 
   columnDefs = [
-    { field: 'id', headerName: 'ID', sortable: true, filter: true },
+    { field: 'id', headerName: 'ID', hide: true },
     { field: 'name', headerName: 'Nombre', sortable: true, filter: true },
     { field: 'username', headerName: 'Usuario', sortable: true, filter: true },
     { field: 'email', headerName: 'Correo', sortable: true, filter: true },

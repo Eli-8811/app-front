@@ -1,3 +1,38 @@
-button {
-  margin-right: 8px;
+@mixin custom-button-style($bg-color, $text-color: #fff) {
+  background-color: $bg-color;
+  color: $text-color;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
+  min-height: unset;
+  height: 2.1rem;
+}
+
+.mat-mdc-button.mat-info,
+.mat-mdc-raised-button.mat-info,
+.mat-mdc-outlined-button.mat-info {
+  @include custom-button-style(#0288d1);
+}
+
+.mat-mdc-button.mat-success,
+.mat-mdc-raised-button.mat-success,
+.mat-mdc-outlined-button.mat-success {
+  @include custom-button-style(#43a047);
+}
+
+.mat-mdc-button.mat-warning,
+.mat-mdc-raised-button.mat-warning,
+.mat-mdc-outlined-button.mat-warning {
+  @include custom-button-style(#f9a825);
+}
+
+.mat-mdc-button.mat-danger,
+.mat-mdc-raised-button.mat-danger,
+.mat-mdc-outlined-button.mat-danger {
+  @include custom-button-style(#e53935);
+}
+
+.mat-mdc-button.mat-neutral,
+.mat-mdc-raised-button.mat-neutral,
+.mat-mdc-outlined-button.mat-neutral {
+  @include custom-button-style(#607d8b);
 }
