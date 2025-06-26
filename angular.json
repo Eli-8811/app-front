@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-17-standalone-example": {
+    "app-front": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/angular-17-standalone-example",
+            "outputPath": "dist/app-front",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -71,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "angular-17-standalone-example:build:production"
+              "buildTarget": "app-front:build:production"
             },
             "development": {
-              "buildTarget": "angular-17-standalone-example:build:development"
+              "buildTarget": "app-front:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "angular-17-standalone-example:build"
+            "buildTarget": "app-front:build"
           }
         },
         "test": {

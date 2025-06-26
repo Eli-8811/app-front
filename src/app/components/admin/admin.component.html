@@ -7,11 +7,12 @@
     mode="side"
     [opened]="isSidebarOpen"
     class="sidebar"
-    (openedChange)="onDrawerChange()"
-  >
+    (openedChange)="onDrawerChange()">
+    
     <app-sidebar />
-  </mat-drawer>
 
+  </mat-drawer>
+  
   <mat-drawer-content class="content">
     <router-outlet />
   </mat-drawer-content>
