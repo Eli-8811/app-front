@@ -25,12 +25,10 @@ export class RolesButtonComponent implements ICellRendererAngularComp {
     return false;
   }
 
-  openRolesDialog() {
-    
+  openRolesDialog() {    
     this.dialog.open(RolesDialogComponent, {
       data: this.params.data.roles
     });
-    
   }
 
 }

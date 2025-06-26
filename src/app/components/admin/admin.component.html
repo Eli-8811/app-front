@@ -1,12 +1,10 @@
+<app-header (toggleSidebar)="toggleSidebar()"></app-header>
+
 <mat-drawer-container class="container">
-  <mat-drawer mode="side" opened class="sidebar">
-    <mat-nav-list role="list">
-      <mat-list-item role="listitem" [routerLink]="['/admin/dashboard']" routerLinkActive="active" >Dashboard</mat-list-item>
-      <mat-list-item role="listitem" [routerLink]="['/admin/users']" routerLinkActive="active" >Users</mat-list-item>
-      <mat-list-item role="listitem" [routerLink]="['/admin/me']" routerLinkActive="active" >Profile</mat-list-item>
-      <mat-list-item role="listitem" (click)="logout()">Logout</mat-list-item>
-    </mat-nav-list>
+  <mat-drawer mode="side" [opened]="isSidebarOpen" class="sidebar">
+    <app-sidebar></app-sidebar>
   </mat-drawer>
+
   <mat-drawer-content class="content">
     <router-outlet />
   </mat-drawer-content>

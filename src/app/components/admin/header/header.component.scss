@@ -1,0 +1,24 @@
+.admin-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.admin-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 16px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+button {
+  color: white;
+}
+
+mat-icon {
+  margin-right: 4px;
+}
