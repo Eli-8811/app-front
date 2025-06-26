@@ -9,6 +9,7 @@ import { GridApi } from 'ag-grid-community';
 import { LayoutService } from '../../../services/layout.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @Component({
   selector: 'app-user',
@@ -19,6 +20,7 @@ import { takeUntil } from 'rxjs/operators';
     MatButtonModule,
     HttpClientModule,
     RolesButtonComponent,
+    MatGridListModule
   ],
   templateUrl: './user.component.html',
   styleUrl: './user.component.scss',
