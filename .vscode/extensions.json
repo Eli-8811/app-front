@@ -1,0 +1,24 @@
+{
+  "recommendations": [
+    "PKief.material-icon-theme",
+    "wesbos.theme-cobalt2",
+    "esbenp.prettier-vscode",
+    "bond.better-comments",
+    "dbaeumer.vscode-eslint"
+  ]
+}
+
+
+/**
+ * ! Necessary Extensions
+ * * Material Icon Theme
+ * https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme
+ * * Cobalt2 Theme Official
+ * https://marketplace.visualstudio.com/items?itemName=wesbos.theme-cobalt2
+ * * Prettier - Code formatter
+ * https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode
+ * * Better Comments
+ * https://marketplace.visualstudio.com/items?itemName=aaron-bond.better-comments
+ * * ESLint
+ * https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint
+ **/
