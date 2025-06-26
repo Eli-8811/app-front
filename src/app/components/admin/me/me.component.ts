@@ -11,7 +11,7 @@ import { selectUserdata } from '../../../state/user.selector';
   styleUrls: ['./me.component.scss']
 })
 export class MeComponent implements OnInit {
-  
+
   userData$: Observable<any>;
   email: string | null = null;
 
@@ -21,10 +21,8 @@ export class MeComponent implements OnInit {
 
   ngOnInit(): void {
     this.userData$.subscribe(data => {
-      if (data) {
-        this.email = data.data.email;
-        console.log('First Name: ', this.email);
-      }
+      this.email = data?.data?.email ?? null;
     });
   }
+
 }

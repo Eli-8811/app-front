@@ -31,7 +31,6 @@ export class AuthService {
 setLoginData(data: any) {
   if (!data || !data.accessToken) return;
   const decodedToken = jwtDecode(data.accessToken);
-  console.log('Decoded Token:', decodedToken);
   this._store.dispatch(
     addUser({ payload: { data: decodedToken, token: data.accessToken, isLoggedIn: true } }),
   );

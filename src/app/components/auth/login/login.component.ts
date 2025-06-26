@@ -69,7 +69,6 @@ export class LoginComponent implements OnInit {
           data: { error: err.error.message }
         });
         dialogRef.afterClosed().subscribe(result => {
-          console.log('The dialog was closed');
           if (result !== undefined) {
             this.error.set(result);
           }

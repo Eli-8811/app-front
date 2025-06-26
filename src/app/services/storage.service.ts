@@ -5,6 +5,7 @@ import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({ providedIn: 'root' })
 export class StorageService {
+  
   constructor(private transferState: TransferState, @Inject(PLATFORM_ID) private platformId: Object) {}
 
   getItem(storageType: string, key: string): string | null {
@@ -54,4 +55,5 @@ export class StorageService {
       return null;
     }
   }
+
 }

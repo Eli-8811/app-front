@@ -1,0 +1,22 @@
+.mat-mdc-button.mat-info,
+.mat-mdc-raised-button.mat-info,
+.mat-mdc-outlined-button.mat-info {
+  background-color: #0288d1;
+  color: #fff;
+  padding-top: 0.3rem; /* Ajusta estos valores a tu gusto */
+  padding-bottom: 0.3rem;
+  min-height: unset; /* Por si Angular Material impone una altura mínima */
+  height: 1.8rem; /* O el valor que se ajuste visualmente a tu diseño */
+}
+
+.btn-full {
+  width: 100%;
+  justify-content: center;
+}
+
+.roles-btn-container {
+  display: flex;
+  align-items: center; /* Centrado vertical */
+  justify-content: center; /* Centrado horizontal, si lo deseas */
+  height: 100%;
+}
