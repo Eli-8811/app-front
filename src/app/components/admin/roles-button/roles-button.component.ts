@@ -3,11 +3,12 @@ import { ICellRendererAngularComp } from 'ag-grid-angular';
 import { MatDialog } from '@angular/material/dialog';
 import { RolesDialogComponent } from '../roles-dialog/roles-dialog.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-roles-button',
   standalone: true,
-  imports: [MatButtonModule],
+  imports: [MatButtonModule, MatIcon],
   templateUrl: './roles-button.component.html',
   styleUrl: './roles-button.component.scss'
 })
