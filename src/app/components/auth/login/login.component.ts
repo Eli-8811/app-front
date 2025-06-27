@@ -1,4 +1,11 @@
-import { ChangeDetectionStrategy, Component, OnInit, inject, model, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  OnInit,
+  inject,
+  model,
+  signal,
+} from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -10,6 +17,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { DialogOverviewExampleDialog } from '../dialog/dialog-overview';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -24,15 +32,14 @@ import { DialogOverviewExampleDialog } from '../dialog/dialog-overview';
     MatFormFieldModule,
     MatInputModule,
     FormsModule,
-    MatButtonModule
+    MatButtonModule,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
   providers: [HttpService],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent implements OnInit {
-  
   public passHide: boolean = true;
 
   readonly error = signal('');
@@ -43,7 +50,11 @@ export class LoginComponent implements OnInit {
     password: new FormControl(),
   });
 
-  constructor(private _httpService: HttpService, private _authService: AuthService) {}
+  constructor(
+    private _httpService: HttpService,
+    private _authService: AuthService,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     this._authService.checkLogin();
@@ -52,29 +63,31 @@ export class LoginComponent implements OnInit {
   public onSubmit() {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
-        return;
+      return;
     }
     const activeElement = document.activeElement as HTMLElement;
     if (activeElement) {
       activeElement.blur();
     }
-    this._httpService
-    .login({ ...this.form.value })
-    .subscribe({
+    this._httpService.login({ ...this.form.value }).subscribe({
       next: (val) => {
         this._authService.setLoginData(val);
       },
       error: (err) => {
         const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
-          data: { error: err.error.message }
+          data: { error: err.error.message },
         });
-        dialogRef.afterClosed().subscribe(result => {
+        dialogRef.afterClosed().subscribe((result) => {
           if (result !== undefined) {
             this.error.set(result);
           }
         });
-      }
+      },
     });
   }
- 
+
+  public onRedirectRegister(): void {
+    this.router.navigateByUrl('/register');
+  }
+  
 }

@@ -11,27 +11,24 @@ export const routes: Routes = [
       {
         path: 'dashboard',
         loadComponent: () =>
-          import('./dashboard/dashboard.component').then(
-            (mod) => mod.DashboardComponent,
-          ),
+          import('./dashboard/dashboard.component').then((mod) => mod.DashboardComponent),
         title: 'Dashboard',
+        data: { breadcrumb: 'Dashboard' },
       },
       {
         path: 'users',
         loadComponent: () =>
-          import('./user/user.component').then(
-            (mod) => mod.UserComponent,
-          ),
+          import('./user/user.component').then((mod) => mod.UserComponent),
         title: 'User List',
+        data: { breadcrumb: 'Usuarios' },
       },
       {
         path: 'me',
         loadComponent: () =>
-          import('./me/me.component').then(
-            (mod) => mod.MeComponent,
-          ),
+          import('./me/me.component').then((mod) => mod.MeComponent),
         title: 'User Me',
-      }
+        data: { breadcrumb: 'Mi perfil' },
+      },
     ],
   },
 ];

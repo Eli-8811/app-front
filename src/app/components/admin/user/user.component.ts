@@ -9,7 +9,7 @@ import { GridApi } from 'ag-grid-community';
 import { LayoutService } from '../../../services/layout.service';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatGridListModule } from '@angular/material/grid-list';
 
 @Component({
   selector: 'app-user',

@@ -1,19 +1,53 @@
 <mat-card class="card">
+
   <mat-card-content class="card-content">
-    <h2 class="text-center">Login</h2>
+    
+    <h2 class="text-center">Iniciar Sesión</h2>
+
     <form [formGroup]="form" (ngSubmit)="onSubmit()" class="example-form">
       <mat-form-field class="example-full-width">
         <mat-label>Username</mat-label>
-        <input matInput formControlName="usernameOrEmail">
+        <input matInput formControlName="usernameOrEmail" />
       </mat-form-field>
+
       <mat-form-field class="example-full-width">
         <mat-label>Password</mat-label>
-        <input matInput [type]="passHide ? 'password' : 'text'" formControlName="password">
-        <button mat-icon-button matSuffix (click)="passHide = !passHide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="passHide">
-          <mat-icon>{{passHide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        <input
+          matInput
+          [type]="passHide ? 'password' : 'text'"
+          formControlName="password"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="passHide = !passHide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="passHide"
+        >
+          <mat-icon>{{ passHide ? "visibility_off" : "visibility" }}</mat-icon>
         </button>
       </mat-form-field>
-      <button type="submit" mat-flat-button color="primary" class="example-full-width">Submit</button>
+      <div style="margin-bottom: 0.911rem;">
+        <button
+          type="submit"
+          mat-flat-button
+          color="primary"
+          class="example-full-width"
+        >
+          Iniciar
+        </button>
+      </div>
+      <div>
+        <button
+          type="button"
+          mat-flat-button
+          color="accent"
+          class="example-full-width"
+          (click)="onRedirectRegister()"
+        >
+          Registrarse
+        </button>
+      </div>
     </form>
   </mat-card-content>
 </mat-card>

@@ -11,6 +11,7 @@ export const routes: Routes = [
         (mod) => mod.LoginComponent,
       ),
     title: 'Sign In',
+    data: { breadcrumb: 'Iniciar sesión' },
   },
   {
     path: 'register',
@@ -19,12 +20,14 @@ export const routes: Routes = [
         (mod) => mod.RegisterComponent,
       ),
     title: 'Sign Up',
+    data: { breadcrumb: 'Registro' },
   },
   {
     path: 'admin',
     canActivate: [authGuard],
     loadChildren: () =>
       import('./components/admin/admin.routes').then((mod) => mod.routes),
+    data: { breadcrumb: 'Administración' },
   },
   { path: '**', component: PageNotFoundComponent },
 ];

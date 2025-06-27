@@ -3,9 +3,10 @@ import { environment } from '../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { catchError, Observable } from 'rxjs';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class HttpService {
-  
   private apiUrl: string = environment.apiUrl;
   private http: HttpClient = inject(HttpClient);
 
@@ -14,6 +15,16 @@ export class HttpService {
     return this.http.get<any>(url).pipe(
       catchError((error) => {
         console.error('Error fetching data:', error);
+        throw error;
+      }),
+    );
+  }
+
+  signup(signUpData: any): Observable<any> {
+    const url = `${this.apiUrl}/auth/signup`;
+    return this.http.post<any>(url, signUpData).pipe(
+      catchError((error) => {
+        console.error('Error al registrar:', error);
         throw error;
       }),
     );
@@ -28,5 +39,4 @@ export class HttpService {
       }),
     );
   }
-  
 }

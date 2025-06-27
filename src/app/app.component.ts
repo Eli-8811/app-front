@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { StoreService } from './services/store.service';
 import { TokenMonitorService } from './services/token.monitor.service';
+import { BreadcrumbService } from './services/breadcrumb.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,8 @@ export class AppComponent implements OnInit {
 
   constructor(
     private _storeService: StoreService,
-    private tokenMonitor: TokenMonitorService
+    private tokenMonitor: TokenMonitorService,
+    public breadcrumbService: BreadcrumbService
   ) {
     this._storeService.initRetriveStoreData();
   }

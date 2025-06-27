@@ -7,6 +7,7 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 import { FooterComponent } from '../footer/footer.component';
 import { UserComponent } from './user/user.component';
 import { LayoutService } from '../../services/layout.service';
+import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
 
 @Component({
   selector: 'app-admin',
@@ -19,6 +20,7 @@ import { LayoutService } from '../../services/layout.service';
     HeaderComponent,
     SidebarComponent,
     FooterComponent,
+    BreadcrumbComponent
   ],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.scss',

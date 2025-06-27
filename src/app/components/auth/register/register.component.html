@@ -1,1 +1,63 @@
-<p>register works!</p>
+<mat-grid-list cols="4" rowHeight="100px">
+  
+  <mat-grid-tile colspan="4" rowspan="1" style="background: #3f51b5; color: white; display: flex; align-items: center; justify-content: center;">
+    <h2 style="margin: 0;">Registro de Usuario</h2>
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="4" rowspan="7">
+    
+    <div style="display: flex; justify-content: center; align-items: center; height: 100%; width: 100%;">
+
+      <form
+        [formGroup]="signupForm"
+        (ngSubmit)="onSubmit()"
+        class="form-vertical"
+        style="width: 100%; max-width: 400px;"
+      >
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Nombre</mat-label>
+          <input matInput formControlName="name" required />
+          <mat-error *ngIf="signupForm.get('name')?.hasError('required')">El nombre es obligatorio</mat-error>
+          <mat-error *ngIf="signupForm.get('name')?.hasError('minlength')">Mínimo 3 caracteres</mat-error>
+          <mat-error *ngIf="signupForm.get('name')?.hasError('maxlength')">Máximo 40 caracteres</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Usuario</mat-label>
+          <input matInput formControlName="username" required />
+          <mat-error *ngIf="signupForm.get('username')?.hasError('required')">El usuario es obligatorio</mat-error>
+          <mat-error *ngIf="signupForm.get('username')?.hasError('minlength')">Mínimo 3 caracteres</mat-error>
+          <mat-error *ngIf="signupForm.get('username')?.hasError('maxlength')">Máximo 15 caracteres</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Correo Electrónico</mat-label>
+          <input matInput formControlName="email" type="email" required />
+          <mat-error *ngIf="signupForm.get('email')?.hasError('required')">El correo es obligatorio</mat-error>
+          <mat-error *ngIf="signupForm.get('email')?.hasError('email')">Formato de correo inválido</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" class="full-width">
+          <mat-label>Contraseña</mat-label>
+          <input matInput formControlName="password" type="password" required />
+          <mat-error *ngIf="signupForm.get('password')?.hasError('required')">La contraseña es obligatoria</mat-error>
+          <mat-error *ngIf="signupForm.get('password')?.hasError('minlength')">Mínimo 8 caracteres</mat-error>
+          <mat-error *ngIf="signupForm.get('password')?.hasError('maxlength')">Máximo 12 caracteres</mat-error>
+        </mat-form-field>
+
+        <button
+          mat-raised-button
+          color="primary"
+          type="submit"
+          style="width: 100%;"
+        >
+          Registrarse
+        </button>
+
+      </form>
+
+    </div>
+
+  </mat-grid-tile>
+  
+</mat-grid-list>

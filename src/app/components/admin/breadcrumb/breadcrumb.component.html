@@ -1,0 +1,9 @@
+<mat-toolbar color="accent" class="breadcrumb-toolbar">
+  <div class="breadcrumb-container">
+    <ng-container *ngFor="let crumb of breadcrumbService.breadcrumbs; let last = last">
+      <a *ngIf="!last" [routerLink]="crumb.url" class="breadcrumb-link">{{ crumb.label }}</a>
+      <span *ngIf="last" class="breadcrumb-current">{{ crumb.label }}</span>
+      <mat-icon *ngIf="!last" class="breadcrumb-separator">chevron_right</mat-icon>
+    </ng-container>
+  </div>
+</mat-toolbar>
