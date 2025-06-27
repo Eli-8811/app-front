@@ -1,23 +1,27 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { StoreService } from './services/store.service';
+import { TokenMonitorService } from './services/token.monitor.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
   imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss',
+  styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit, AfterViewInit {
+export class AppComponent implements OnInit {
+  title = 'angular-17';
 
-  title = 'angular-17-standalone-example';
-  
-  constructor(private _storeService: StoreService) {
+  constructor(
+    private _storeService: StoreService,
+    private tokenMonitor: TokenMonitorService
+  ) {
     this._storeService.initRetriveStoreData();
   }
 
-  ngOnInit(): void {}
-  ngAfterViewInit(): void {}
+  ngOnInit() {
+    this.tokenMonitor.startMonitoring(30000);
+  }
 
 }
