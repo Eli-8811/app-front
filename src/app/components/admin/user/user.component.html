@@ -1,11 +1,10 @@
-<div colspan="4">
-  <ag-grid-angular
-    style="width: 100%"
-    class="ag-theme-alpine"
-    [rowData]="rowData"
-    [columnDefs]="columnDefs"
-    rowSelection="single"
-    domLayout="autoHeight"
-    (gridReady)="onGridReady($event)"
-  ></ag-grid-angular>
-</div>
+<ag-grid-angular
+  style="width: 100%"
+  class="ag-theme-alpine"
+  [rowData]="rowData"
+  [columnDefs]="columnDefs"
+  [rowHeight]="56"
+  rowSelection="single"
+  domLayout="autoHeight"
+  (gridReady)="onGridReady($event)"
+></ag-grid-angular>
