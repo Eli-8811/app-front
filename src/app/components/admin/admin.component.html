@@ -1,24 +1,31 @@
-<app-header (toggleSidebar)="toggleSidebar()"></app-header>
+<div class="d-flex flex-column min-vh-100">
 
-<app-breadcrumb></app-breadcrumb>
+  <app-header (toggleSidebar)="toggleSidebar()"></app-header>
 
-<mat-drawer-container class="container">
+  <app-breadcrumb></app-breadcrumb>
 
-  <mat-drawer
-    #drawer
-    mode="side"
-    [opened]="isSidebarOpen"
-    class="sidebar"
-    (openedChange)="onDrawerChange()">
-    
-    <app-sidebar />
+  <div class="flex-fill d-flex">
 
-  </mat-drawer>
-  
-  <mat-drawer-content class="content">
-    <router-outlet />
-  </mat-drawer-content>
+    <mat-drawer-container class="flex-fill w-100">
 
-</mat-drawer-container>
+      <mat-drawer
+        #drawer
+        mode="side"
+        [opened]="isSidebarOpen"
+        class="sidebar"
+        (openedChange)="onDrawerChange()"
+      >
+        <app-sidebar />
+      </mat-drawer>
 
-<app-footer></app-footer>
+      <mat-drawer-content>
+        <router-outlet />
+      </mat-drawer-content>
+      
+    </mat-drawer-container>
+
+  </div>
+
+  <app-footer></app-footer>
+
+</div>
