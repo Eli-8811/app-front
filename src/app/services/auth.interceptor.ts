@@ -20,18 +20,14 @@ export class AuthInterceptor implements HttpInterceptor {
   ) {}
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-
     const token = this.tokenService.getToken();
-
     const publicPaths = ['/auth/signup', '/auth/signin'];
     const isPublic = publicPaths.some(path => req.url.includes(path));
-
     const authReq = (token && !isPublic)
       ? req.clone({
           setHeaders: { Authorization: `Bearer ${token}` }
         })
       : req;
-
     return next.handle(authReq).pipe(
       catchError((error: HttpErrorResponse) => {
         if (error.status === 401) {
@@ -40,7 +36,6 @@ export class AuthInterceptor implements HttpInterceptor {
         return throwError(() => error);
       })
     );
-    
   }
 
 }

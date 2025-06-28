@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RolesButtonComponent } from '../../admin/roles-button/roles-button.component';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { CommonModule } from '@angular/common';
+import { TokenMonitorService } from '../../../services/token.monitor.service';
 
 @Component({
   selector: 'app-register',
@@ -35,12 +36,15 @@ import { CommonModule } from '@angular/common';
   styleUrl: './register.component.scss',
 })
 export class RegisterComponent {
+
   signupForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private httpService: HttpService,
+    private tokenMonitorService: TokenMonitorService
   ) {
+    this.tokenMonitorService.stopMonitoring();
     this.signupForm = this.fb.group({
       name: [
         '',

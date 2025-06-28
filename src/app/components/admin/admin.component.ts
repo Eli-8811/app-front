@@ -20,13 +20,18 @@ import { BreadcrumbComponent } from './breadcrumb/breadcrumb.component';
     HeaderComponent,
     SidebarComponent,
     FooterComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
   ],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.scss',
 })
 export class AdminComponent {
-  constructor(private layoutService: LayoutService) {}
+  
+  constructor(
+    private layoutService: LayoutService,
+  ) {
+    
+  }
 
   isSidebarOpen = true;
 

@@ -18,6 +18,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { DialogOverviewExampleDialog } from '../dialog/dialog-overview';
 import { Router } from '@angular/router';
+import { TokenMonitorService } from '../../../services/token.monitor.service';
 
 @Component({
   selector: 'app-login',
@@ -53,10 +54,14 @@ export class LoginComponent implements OnInit {
   constructor(
     private _httpService: HttpService,
     private _authService: AuthService,
+    private tokenMonitorService: TokenMonitorService,
     private router: Router,
-  ) {}
+  ) {
+
+  }
 
   ngOnInit(): void {
+    this.tokenMonitorService.startMonitoring(30000);
     this._authService.checkLogin();
   }
 

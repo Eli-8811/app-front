@@ -12,18 +12,18 @@ import { BreadcrumbService } from './services/breadcrumb.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'angular-17';
+
+  title = 'App';
 
   constructor(
     private _storeService: StoreService,
-    private tokenMonitor: TokenMonitorService,
-    public breadcrumbService: BreadcrumbService
+    public breadcrumbService: BreadcrumbService,
   ) {
     this._storeService.initRetriveStoreData();
   }
 
   ngOnInit() {
-    this.tokenMonitor.startMonitoring(30000);
+    console.log('[AppComponent] ngOnInit');
   }
 
 }

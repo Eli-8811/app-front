@@ -1,10 +1,13 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnDestroy } from '@angular/core';
 import { TokenService } from './token.service';
 import { AuthService } from './auth.service';
+import { interval, Subject } from 'rxjs';
+import { takeUntil, tap } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
-export class TokenMonitorService {
-  private intervalId: any;
+export class TokenMonitorService implements OnDestroy {
+
+  private stop$ = new Subject<void>();
 
   constructor(
     private tokenService: TokenService,
@@ -12,21 +15,27 @@ export class TokenMonitorService {
   ) {}
 
   startMonitoring(intervalMs: number): void {
-    this.stopMonitoring();
-    this.intervalId = setInterval(() => {
-      const isExpired = this.tokenService.isTokenExpired();
-      console.log(`[TokenMonitor] ${new Date().toLocaleTimeString()} - Token expired: ${isExpired}`);
-
-      if (isExpired) {
-        this.authService.logout();
-      }
-    }, intervalMs);
+    interval(intervalMs)
+      .pipe(
+        takeUntil(this.stop$),
+        tap(() => {
+          const isExpired = this.tokenService.isTokenExpired();
+          console.log(`[TokenMonitor-RxJS] ${new Date().toLocaleTimeString()} - Token expired: ${isExpired}`);
+          if (isExpired) {
+            this.authService.logout();
+          }
+        })
+      )
+      .subscribe();
   }
 
   stopMonitoring(): void {
-    if (this.intervalId) {
-      clearInterval(this.intervalId);
-    }
+    this.stop$.next();
+    this.stop$.complete();
   }
 
+  ngOnDestroy(): void {
+    this.stopMonitoring();
+  }
+  
 }
